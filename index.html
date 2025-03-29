@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('./images/bg.jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="w-screen h-screen flex flex-col">
+
+    <header class="w-full h-16 flex flex-row bg-cover bg-center" style="background-color: #2a422b">
+        <div class="h-full w-[10%] flex items-center justify-center">
+            <img src="./images/logo.png" alt="logo" class="w-10">
+        </div>
+        <div class="h-full w-[80%] flex items-center justify-center space-x-4">
+            <span class="text-black text-sm cursor-pointer text-white" onclick="window.location.href='products.html'">Product</span>
+            <span class="text-black text-sm cursor-pointer text-white">Sustainability</span>
+            <span class="text-black text-sm cursor-pointer text-white">Loyalty</span>
+            <span class="text-black text-sm cursor-pointer text-white">Biong</span>
+        </div>
+        <div class="h-full w-[10%] flex items-center justify-end space-x-4">
+            <div id="search-icon" class="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 bg-opacity-50 cursor-pointer" onclick="window.location.href='search.html'">
+                <img src="./images/search.png" alt="Search" class="h-6 w-6">
+            </div>
+
+            <div class="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 bg-opacity-50 cursor-pointer" onclick="window.location.href='cart.html'">
+                <img src="./images/cart.png" alt="Cart" class="h-6 w-6">
+            </div>
+        </div>
+    </header>
+    <script src="home.html">
+
+
+let internalLink = document.createElement("a");
+internalLink.href = "page.html";
+internalLink.innerText = "برو به صفحه دیگر";
+document.body.appendChild(internalLink);
+
+
+let externalLink = document.createElement("a");
+externalLink.href = "https://www.example.com";
+externalLink.innerText = "بازدید از سایت دیگر";
+externalLink.target = "_blank"; // باز کردن لینک در پنجره جدید
+externalLink.rel = "noopener noreferrer"; // امنیت بیشتر
+document.body.appendChild(externalLink);
+    </script>
+
+
+</body>
+</html>
+
+
+
