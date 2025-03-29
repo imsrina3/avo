@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #445c46; /* رنگ بک‌گراند */
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #445c43;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .empty-cart {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="container">
+        <h1 class="text-2xl font-bold mb-4">Shopping Cart</h1>
+        <div id="cartItems"></div>
+        <button class="mt-4 bg-green-500 text-white px-4 py-2 rounded" onclick="checkout()">Proceed to Payment</button>
+    </div>
+
+    <script src="cart.js" defer></script>
+</body>

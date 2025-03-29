@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('./images/bgs.jpg'); /* آدرس بک‌گراند جستجو */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="w-screen h-screen flex flex-col">
+    <header class="w-full h-16 flex flex-row bg-cover bg-center" style="background-image: url('./images/header-bg.jpg');">
+        <div class="h-full w-[10%] flex items-center justify-center">
+            <img src="./images/logo.png" alt="logo" class="h-12 w-auto">
+        </div>
+        <div class="h-full w-[80%] flex items-center justify-center space-x-4">
+            <span class="text-black text-sm cursor-pointer text-white" onclick="window.location.href='products.html'">Product</span>
+            <span class="text-black text-sm cursor-pointer text-white">Sustainability</span>
+            <span class="text-black text-sm cursor-pointer text-white">Loyalty</span>
+            <span class="text-black text-sm cursor-pointer text-white">Biong</span>
+        </div>
+        <div class="h-full w-[10%] flex items-center justify-end space-x-4">
+            <div id="search-icon" class="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 bg-opacity-50 cursor-pointer" onclick="window.location.href='search.html'">
+                <img src="./images/search.png" alt="Search" class="h-6 w-6">
+            </div>
+            <div class="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 bg-opacity-50 cursor-pointer" onclick="window.location.href='cart.html'">
+                <img src="./images/cart.png" alt="Cart" class="h-6 w-6">
+            </div>
+        </div>
+    </header>
+    <div id="search-bar" class="mt-4 mx-auto w-[80%] p-4 search-bar-bg rounded-lg">
+        <input type="text" id="searchInput" placeholder="Search products..." 
+               class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"/>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded" onclick="searchProducts()">Search</button>
+        <div id="searchResults" class="mt-4"></div>
+    </div>
+    <script>
+        const products = [
+            { id: 1, name: 'Face serum', price: 70.00, image: './images/face_serum.jpg' },
+            { id: 2, name: 'Conditioner', price: 70.00, image: './images/conditioner.jpg' },
+            { id: 3, name: 'scrub', price: 70.00, image: './images/scrub.jpg' },
+            { id: 4, name: 'fragrant', price: 70.00, image: './images/fragrant.jpg' },
+            { id: 5, name: 'lipstick', price: 60.00, image: './images/lipstick.jpg' },
+            { id: 6, name: 'meadow whisper', price: 44.00, image: './images/meadow whisper.jpg' },
+            { id: 7, name: 'perfum', price: 99.00, image: './images/perfum.jpg' },
+            { id: 8, name: 'shampoo', price: 100.00, image: './images/shampoo.jpg' },
+        ];
+        function searchProducts() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = '';
+
+            const filteredProducts = products.filter(product =>
+                product.name.toLowerCase().includes(searchInput)
+            );
+            if (filteredProducts.length > 0) {
+                filteredProducts.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.classList.add('p-4', 'bg-white', 'rounded', 'shadow-md', 'mb-4');
+                    productElement.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}" class="w-48 h-64 object-cover rounded">
+                        <h2 class="text-lg font-bold mt-2">${product.name}</h2>
+                        <p class="text-gray-600">$${product.price.toFixed(2)}</p>
+                        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded" onclick="addToCart(${product.id})">Add to Cart</button>
+                    `;
+                    searchResults.appendChild(productElement);
+                });
+            } else {
+                searchResults.innerText = 'No products found';
+            }
+        }
+        function addToCart(productId) {
+            console.log('Product added to cart:', productId);
+        }
+    </script>
+
+</body>
+</html>
